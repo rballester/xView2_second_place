@@ -138,9 +138,8 @@ for disaster in disasters:
 
             # Inference
             predim, overlay = dp.predict(pre=disaster_files[number]['pre'], post=disaster_files[number]['post'])
-            predim2 = np.argmax(predim, axis=0)
 
-            # Save tiff band (i.e. the 5 x N x M prediction)
+            # Save tiff band (i.e. the 5 x N x M prediction) as an N x M .tif file. Each pixel contains a value (0, 1, 2, 3, or 4) containing the most likely class
             output_tif = os.path.join(output_path, '{}_{}_damage_band.tif'.format(disaster, number))
             if not os.path.exists(output_tif):
                 predim2 = np.argmax(predim, axis=0)
